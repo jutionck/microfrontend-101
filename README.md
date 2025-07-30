@@ -1,37 +1,33 @@
 # Microfrontend 101
 
-Microfrontend menggunakan React, Webpack Module Federation, dan Tailwind CSS
+Microfrontend dengan **React**, **Webpack Module Federation**, dan **Tailwind CSS**
 
-## 🚀 Struktur Proyek
+## Struktur Proyek
 
 ```
 microfrontend-101/
-├── host-app/          # Aplikasi utama (port 3000)
-├── login-app/         # Microfrontend login (port 3001)
-├── todo-app/          # Microfrontend todo (port 3002)
-├── start-dev.sh       # Script jalankan semua aplikasi
-├── stop-dev.sh        # Script stop semua aplikasi
+├── host-app/          # Host app (port 3000)
+├── login-app/         # Remote app login (port 3001)
+├── todo-app/          # Remote app todo (port 3002)
 └── README.md          # Dokumentasi ini
 ```
 
-## ✨ Fitur Utama
+## Fitur
 
-### 🏠 Host App (Port 3000)
+### Host App
 
-- **Shell aplikasi utama** yang mengintegrasikan semua microfrontend
-- **Session management** dengan localStorage
-- **Tailwind CSS** untuk styling modern dan responsive
+- **Host aplikasi utama** yang mengintegrasikan semua microfrontend
 
-### 🔐 Login App (Port 3001)
+### Login App
 
 - **Demo credentials**: username: `admin`, password: `password`
 - **Exposed component**: `loginApp/Login`
 
-### ✅ Todo App (Port 3002)
+### Todo App
 
 - **Exposed component**: `todoApp/TodoList`
 
-## 🔧 Teknologi yang Digunakan
+## Teknologi
 
 - **React 19** - UI framework
 - **TypeScript** - Type safety
@@ -41,25 +37,23 @@ microfrontend-101/
 - **localStorage** - Session persistence
 - **PostCSS** - CSS processing
 
-## 🚀 Quick Start
+## Quick Start
 
-### 1. Jalankan Development Environment
+### Development Environment
 
 ```bash
-# Buat script executable
-chmod +x start-dev.sh stop-dev.sh
-
-# Jalankan semua aplikasi
-./start-dev.sh
+cd host-app && npm run dev:webpack
+cd login-app && npm run dev:webpack
+cd todo-app && npm run dev:webpack
 ```
 
 Setelah menjalankan script, akses:
 
-- **🏠 Host App**: http://localhost:3000 (Dashboard Utama)
-- **🔐 Login App**: http://localhost:3001 (Standalone Login)
-- **✅ Todo App**: http://localhost:3002 (Standalone Todo)
+- **Host App**: http://localhost:3000
+- **Login App**: http://localhost:3001
+- **Todo App**: http://localhost:3002
 
-## 📱 Cara Penggunaan
+## Cara Penggunaan
 
 1. **Buka http://localhost:3000**
 2. **Login** dengan credentials:
@@ -68,27 +62,15 @@ Setelah menjalankan script, akses:
 3. **Kelola todos** di dashboard
 4. **Logout** untuk clear session
 
-## 🛠️ Development Scripts
-
-### Webpack Mode
+## Build Production
 
 ```bash
-# Jalankan individual dengan webpack
-cd host-app && npm run dev:webpack
-cd login-app && npm run dev:webpack
-cd todo-app && npm run dev:webpack
-```
-
-## 🏗️ Build Production
-
-```bash
-# Build semua aplikasi
 cd host-app && npm run build:webpack
 cd login-app && npm run build:webpack
 cd todo-app && npm run build:webpack
 ```
 
-## 📋 Arsitektur Microfrontend
+## Arsitektur Microfrontend
 
 ### Module Federation Configuration
 
@@ -126,51 +108,7 @@ import React from 'react';
 // Component initialization
 ```
 
-## 🐛 Troubleshooting
-
-### Masalah Module Federation
-
-```bash
-# Pastikan semua app running di port yang benar
-./start-dev.sh
-
-# Check remoteEntry.js accessible
-curl http://localhost:3001/remoteEntry.js
-curl http://localhost:3002/remoteEntry.js
-```
-
-### Masalah Tailwind CSS
-
-```bash
-# Pastikan CDN Tailwind ter-load di host-app
-# Check di browser DevTools > Network > tailwindcss
-
-# Jika masih tidak work, restart semua service
-./stop-dev.sh
-./start-dev.sh
-```
-
-### Masalah Port Conflicts
-
-```bash
-# Check port yang terpakai
-lsof -i :3000 -i :3001 -i :3002
-
-# Kill process yang conflict
-./stop-dev.sh
-```
-
-### Reset Complete
-
-```bash
-# Hard reset jika ada masalah
-./stop-dev.sh
-rm -rf */node_modules */package-lock.json
-./install-deps.sh
-./start-dev.sh
-```
-
-## 📝 Log Files
+## Log Files
 
 Script akan generate log files:
 
