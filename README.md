@@ -1,6 +1,6 @@
-# Microfrontend 101 - Implementasi Lengkap
+# Microfrontend 101
 
-Proyek microfrontend menggunakan React, Webpack Module Federation, dan Tailwind CSS dengan arsitektur yang sudah diperbaiki dan dioptimalkan.
+Microfrontend menggunakan React, Webpack Module Federation, dan Tailwind CSS
 
 ## 🚀 Struktur Proyek
 
@@ -19,7 +19,7 @@ microfrontend-101/
 ### 🏠 Host App (Port 3000)
 
 - **Shell aplikasi utama** yang mengintegrasikan semua microfrontend
-- **Session management** dengan localStorage (24 jam expire)
+- **Session management** dengan localStorage
 - **Tailwind CSS** untuk styling modern dan responsive
 
 ### 🔐 Login App (Port 3001)
